@@ -12,7 +12,7 @@ const eqArrays = function(arr1, arr2) {
       return false;
     }
     for (let i = 0; i < arr1.length; i++) {
-      if (!eqArrays(arr1[i], arr2[i])) {
+      if (eqArrays(arr1[i], arr2[i]) === false) {
         return false;
       }
     }
