@@ -1,9 +1,11 @@
 const assertEqual = require('../assertEqual');
 const head = require('../head');
 const tail = require('../tail');
+const eqArrays = require('../eqArray');
+const assertArraysEqual = require('../assertArraysEqual');
 
 //Assert Equal
-assertEqual("Lighthouse Labs", "Bootcamp");
+assertEqual("Lighthouse Labs", "Lighthouse Labs");
 assertEqual(1, 1);
 
 //Head
@@ -18,3 +20,12 @@ assertEqual(result[1], "Labs"); // ensure second element is "Labs"
 const words = ["Yo Yo", "Lighthouse", "Labs"];
 tail(words); // no need to capture the return value since we are not checking it
 assertEqual(words.length, 3); // original array should still have 3 elements!
+
+//EqArrays
+assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true);
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false);
+
+//Assert ArraysEqual
+
+assertArraysEqual(["1", "2", "3"], ["1", "2", "3"]);
