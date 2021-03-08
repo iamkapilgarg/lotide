@@ -40,7 +40,6 @@ describe("#middle", () => {
 });
 
 
-
 //Assert Equal
 assertEqual("Lighthouse Labs", "Lighthouse Labs");
 assertEqual(1, 1);
