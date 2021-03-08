@@ -16,18 +16,34 @@ describe("#head", () => {
   });
 });
 
+describe("#tail", () => {
+  it("should return length 2", () => {
+    const result = tail(["Hello", "Lighthouse", "Labs"]);
+    assert.strictEqual(result.length, 2);
+  });
+  it("should return Labs", () => {
+    const result = tail(["Hello", "Lighthouse", "Labs"]);
+    assert.strictEqual(result[1], "Labs");
+  });
+});
+
+describe("#middle", () => {
+  it("should return blank", () => {
+    assert.deepEqual(middle([1]),[]);
+  });
+  it("should return [2]", () => {
+    assert.deepEqual(middle([1, 2, 3]),[2]);
+  });
+  it("should return [2,3]", () => {
+    assert.deepEqual(middle([1, 2, 3, 4]),[2,3]);
+  });
+});
+
+
+
 //Assert Equal
 assertEqual("Lighthouse Labs", "Lighthouse Labs");
 assertEqual(1, 1);
-
-//Tail
-const result = tail(["Hello", "Lighthouse", "Labs"]);
-assertEqual(result.length, 2);
-assertEqual(result[0], "Lighthouse");
-assertEqual(result[1], "Labs");
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-tail(words);
-assertEqual(words.length, 3);
 
 //EqArrays
 assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
@@ -36,11 +52,3 @@ assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false);
 
 //Assert ArraysEqual
 assertArraysEqual(["1", "2", "3"], ["1", "2", "3"]);
-
-//middle
-assertArraysEqual(middle([1]),[]);
-assertArraysEqual(middle([1, 2]),[]);
-assertArraysEqual(middle([1, 2, 3]),[2]);
-assertArraysEqual(middle([1, 2, 3, 4, 5]),[3]);
-assertArraysEqual(middle([1, 2, 3, 4]),[2,3]);
-assertArraysEqual(middle([1, 2, 3, 4, 5, 6]),[3,4]);
