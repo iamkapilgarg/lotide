@@ -1,15 +1,18 @@
 const assert = require('chai').assert;
-
-const assertEqual = require('../assertEqual');
 const head = require('../head');
 const tail = require('../tail');
 const eqArrays = require('../eqArray');
-const assertArraysEqual = require('../assertArraysEqual');
 const middle = require('../middle');
 const countLetters = require('../countLetters');
 const countOnly = require('../countOnly');
 const findKey = require('../findKey');
 const findKeyByValue = require('../findKeyByValue');
+const flatten = require('../flatten');
+const letterPositions = require('../letterPositions');
+const map = require('../map');
+const takeUntil = require('../takeUntil');
+const without = require('../without');
+const eqObjects = require('../eqObjects');
 
 describe("#head", () => {
   it("returns 1 for [1, 2, 3]", () => {
@@ -103,46 +106,54 @@ describe("#find key by value", () => {
     assert.strictEqual(findKeyByValue(bestTVShowsByGenre, "The Wire"), "drama");
   });
 });
-describe("", () => {
-  it("", () => {
-
-  });
-});
-describe("", () => {
-  it("", () => {
-
-  });
-});
-describe("", () => {
-  it("", () => {
-
-  });
-});
-describe("", () => {
-  it("", () => {
-
-  });
-});
-describe("", () => {
-  it("", () => {
-
-  });
-});
-describe("", () => {
-  it("", () => {
-
+describe("#Flatten", () => {
+  it("should be equal to [1,2,3,4]", () => {
+    assert.deepEqual(flatten([1,2,[3,4]]), [1,2,3,4]);
   });
 });
 
+describe("#Letter Positions", () => {
+  const result1 = letterPositions("kapil garg");
+  it("should be equal to 0", () => {
+    assert.deepEqual(result1['k'], [0]);
+  });
+  it("should be equal to [1,7]", () => {
+    assert.deepEqual(result1['a'], [1, 7]);
+  });
+});
+describe("#Map", () => {
+  it("should be equal to [ 'g', 'c', 't', 'm', 't' ]", () => {
+    const words = ["ground", "control", "to", "major", "tom"];
+    const results1 = map(words, word => word[0]);
+    assert.deepEqual(results1, [ 'g', 'c', 't', 'm', 't' ]);
+  });
+});
+describe("#takeUntil", () => {
+  it("should be equal to [ 1, 2, 5, 7, 2 ]", () => {
+    const data1 = [1, 2, 5, 7, 2, -1, 2, 4, 5];
+    const results1 = takeUntil(data1, x => x < 0);
+    assert.deepEqual(results1,[ 1, 2, 5, 7, 2 ]);
+  });
+});
 
-//Assert Equal
-assertEqual("Lighthouse Labs", "Lighthouse Labs");
-assertEqual(1, 1);
+describe("#without", () => {
+  it("should be equal to ['hello', 'world', 'lighthouse']", () => {
+    const words = ["hello", "world", "lighthouse"];
+    without(words, ["lighthouse"]);
+    assert.deepEqual(words, ["hello", "world", "lighthouse"]);
+  });
+});
 
-//EqArrays
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true);
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false);
+describe("#eqArrays", () => {
+  it("should be true", () => {
+    assert.strictEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
+  });
+});
 
-//Assert ArraysEqual
-assertArraysEqual(["1", "2", "3"], ["1", "2", "3"]);
+describe("#eqObjects", () => {
+  it("should be true", () => {
+    const ab = { a: "1", b: "2" };
+    const ba = { b: "2", a: "1" };
+    assert.strictEqual(eqObjects(ab, ba), true); // => true
+  });
+});

@@ -6,9 +6,4 @@ const map = function(array, callback) {
   return results;
 };
 
-const words = ["ground", "control", "to", "major", "tom"];
-const results1 = map(words, word => word[0]);
-const results2 = map(words, word => word + word);
-console.log(results2);
-assertArraysEqual(results1, [ 'g', 'c', 't', 'm', 't' ]);
-assertArraysEqual(results2, [ 'groundground', 'controlcontrol', 'toto', 'majormajor', 'tomtom' ]);
+module.exports = map;
