@@ -10,6 +10,4 @@ const countLetters = function(string) {
   return result;
 };
 
-const result1 = countLetters("kapilgarg");
-
-assertEqual(result1['a'],2);
+module.exports = countLetters;
